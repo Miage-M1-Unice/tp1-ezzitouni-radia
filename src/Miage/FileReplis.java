@@ -1,3 +1,6 @@
+/**
+ * @author utilisateur
+ */
 package Miage;
 
 import java.io.File;
@@ -5,35 +8,45 @@ import java.util.Arrays;
 
 public class FileReplis {
 	 
-		public  File[] liste;
+		private File fichier;
 		
-		public FileReplis(String a) {
+		
+		public FileReplis(File l) {
+			this.fichier = l;
+		
+		}
+		
+		
+		/**
+		 * 
+		 * @param f
+		 */
+		public void parcoursProfondeur(File f) {
+			// creation d un tableau de fichier qui reçoit tous les fichier du parametre f
+			File[] tab = f.listFiles();
 			
-			File repert = new File(a);
-			liste = repert.listFiles();
-
+			for(int i =0; i< tab.length; i++) {
+				
+				if(tab[i].isDirectory()) {//tester si l'element à la position i du tableau  est un repertoire 
+					System.out.println("*********[repertoire]==> " +tab[i]);
+					parcoursProfondeur(tab[i]);// appliquer la meme methode(appel récursif) sur les sous repertoire de ce repertoire
+				}else
+					
+					System.out.println("[fichier]==> " +tab[i]);
+			}
+			
 		}
-		
-		 @Override
-		public String toString() {
-			return "FileReplis [liste=" + Arrays.toString(liste) + "]";
-		}
-
-		public File[] listFiles() {
-			 return liste;
-		 }
-
 	 	
-		public static void main(String[] args) {
+		public static void main(String[] args) 
+		{
+			File f = new File(".");
 			
-			File a = new File(".");			
-			 if (liste != null) {         
-		            for (int i = 0; i < liste.length; i++) {
-		                System.out.println(liste[i]);
-		            }
-		        
+			FileReplis rep = new FileReplis(f);
+			
+			rep.parcoursProfondeur(f);
+		
 		}
 
-		}
+		
 
 }

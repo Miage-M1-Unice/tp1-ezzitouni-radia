@@ -18,7 +18,7 @@ public class FileRep {
 	
 	public static void main(String[] args) {
 		
-		FileRep a = new FileRep(".");
+		FileRep a = new FileRep("./.");
 		 if (list != null) {         
 	            for (int i = 0; i < list.length; i++) {
 	                System.out.println(list[i]);
