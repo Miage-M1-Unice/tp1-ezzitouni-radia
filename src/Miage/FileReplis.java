@@ -5,6 +5,9 @@ package Miage;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class FileReplis {
@@ -128,7 +131,20 @@ public class FileReplis {
 			
 			/****************************Implementation de la question 3 Anonyme*************************************/
 
-			rep.trouverfichierAnonym("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			// rep.trouverfichierAnonym("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			
+			
+			/******************************************EXO1-partieB*********************************************/
+			
+			String dir = "C:\\Users\\utilisateur\\eclipse-workspace\\TP1";
+			
+			try {
+				Files.walkFileTree(Paths.get(dir), new Exo1B());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 
 		}
 
