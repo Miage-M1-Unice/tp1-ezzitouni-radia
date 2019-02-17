@@ -4,6 +4,7 @@
 package Miage;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.Arrays;
 
 public class FileReplis {
@@ -15,7 +16,7 @@ public class FileReplis {
 			this.fichier = l;
 		
 		}
-		
+		/*******************************************QUESTION 2****************************************************************/
 		
 		/**
 		 * 
@@ -36,17 +37,64 @@ public class FileReplis {
 			}
 			
 		}
+		/*********************************************QUESTION3**************************************************************/
+		public class FiltreInterne implements FilenameFilter{
+	 		private  String extension;
+	 		
+	 		public FiltreInterne(String ext) {
+	 			this.extension= ext.toLowerCase();
+	 		}
+	 		
 	 	
+			@Override
+			public boolean accept(File dir, String name) {
+				 
+				return name.toLowerCase().endsWith(extension);
+			}
+	 		
+	 	}
+		
+		
+		
+		
+		
+		public void trouverfichier(String chemin, String ext) {
+ 			File fich = new File(chemin);
+ 			
+ 			/*if(!fich.exists()) 
+ 				System.out.println(chemin+ "le chemin n existe pas");*/
+ 			
+ 			
+ 			File[] liste = fich.listFiles(new FiltreInterne(ext));
+ 			
+ 			if(liste.length == 0) {
+ 				System.out.println(chemin+ "n'a aucun fichier avec l extension "+ext);
+ 			}else {
+ 				System.out.println("\"les/le fichier(s) avec l extension"+ext+ ": ");
+ 				for(int i=0; i<liste.length; i++) {
+ 					System.out.println( liste[i].getName());
+ 				}
+ 			}
+ 		}
+		
+		
+		
+		/***********************************************************************************************************/
 		public static void main(String[] args) 
 		{
 			File f = new File(".");
 			
 			FileReplis rep = new FileReplis(f);
 			
-			rep.parcoursProfondeur(f);
-		
+			//rep.parcoursProfondeur(f);
+			/****************************Implementation de la question 3*************************************/
+			
+			//rep.trouverfichier("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			rep.trouverfichier(".", ".java");
 		}
 
 		
 
 }
+
+
