@@ -53,17 +53,9 @@ public class FileReplis {
 			}
 	 		
 	 	}
-		
-		
-		
-		
-		
+				
 		public void trouverfichier(String chemin, String ext) {
  			File fich = new File(chemin);
- 			
- 			/*if(!fich.exists()) 
- 				System.out.println(chemin+ "le chemin n existe pas");*/
- 			
  			
  			File[] liste = fich.listFiles(new FiltreInterne(ext));
  			
@@ -77,6 +69,20 @@ public class FileReplis {
  			}
  		}
 		
+		public void trouverfichierEXT(String chemin, String ext) {
+ 			File fich = new File(chemin);
+ 			
+ 			File[] liste = fich.listFiles(new FiltreExterne(ext));
+ 			
+ 			if(liste.length == 0) {
+ 				System.out.println(chemin+ "n'a aucun fichier avec l extension "+ext);
+ 			}else {
+ 				System.out.println("\"les/le fichier(s) avec l extension"+ext+ ": ");
+ 				for(int i=0; i<liste.length; i++) {
+ 					System.out.println( liste[i].getName());
+ 				}
+ 			}
+ 		}
 		
 		
 		/***********************************************************************************************************/
@@ -87,10 +93,15 @@ public class FileReplis {
 			FileReplis rep = new FileReplis(f);
 			
 			//rep.parcoursProfondeur(f);
-			/****************************Implementation de la question 3*************************************/
+			
+			/****************************Implementation de la question 3 interne *************************************/
 			
 			//rep.trouverfichier("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
-			rep.trouverfichier(".", ".java");
+			
+			/****************************Implementation de la question 3 externe*************************************/
+			
+			rep.trouverfichierEXT("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+
 		}
 
 		
