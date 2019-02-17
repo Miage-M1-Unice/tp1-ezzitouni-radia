@@ -84,6 +84,30 @@ public class FileReplis {
  			}
  		}
 		
+
+		public void trouverfichierAnonym(String chemin, String ext) {
+ 			File fich = new File(chemin);
+ 			
+ 			File[] liste = fich.listFiles(new FilenameFilter() {
+ 				
+				@Override
+				public boolean accept(File arg0, String arg1) {
+					// TODO Auto-generated method stub
+					return arg1.toLowerCase().endsWith(ext);
+				}
+			});
+ 			
+ 			if(liste.length == 0) {
+ 				System.out.println(chemin+ "n'a aucun fichier avec l extension "+ext);
+ 			}else {
+ 				System.out.println("\"les/le fichier(s) avec l extension"+ext+ ": ");
+ 				for(int i=0; i<liste.length; i++) {
+ 					System.out.println( liste[i].getName());
+ 				}
+ 			}
+ 		}
+		
+		
 		
 		/***********************************************************************************************************/
 		public static void main(String[] args) 
@@ -100,7 +124,11 @@ public class FileReplis {
 			
 			/****************************Implementation de la question 3 externe*************************************/
 			
-			rep.trouverfichierEXT("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			// rep.trouverfichierEXT("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			
+			/****************************Implementation de la question 3 Anonyme*************************************/
+
+			rep.trouverfichierAnonym("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
 
 		}
 
