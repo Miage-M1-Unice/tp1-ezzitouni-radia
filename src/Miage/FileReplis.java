@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FileReplis {
 	 
@@ -48,7 +50,6 @@ public class FileReplis {
 	 			this.extension= ext.toLowerCase();
 	 		}
 	 		
-	 	
 			@Override
 			public boolean accept(File dir, String name) {
 				 
@@ -96,7 +97,15 @@ public class FileReplis {
 				@Override
 				public boolean accept(File arg0, String arg1) {
 					// TODO Auto-generated method stub
-					return arg1.toLowerCase().endsWith(ext);
+					
+					Pattern p = Pattern.compile(".*java");
+					Matcher m = p.matcher(chemin);
+					
+					if(m.find())
+						return true;
+					return false;
+					
+					//return arg1.toLowerCase().endsWith(ext);
 				}
 			});
  			
@@ -111,6 +120,7 @@ public class FileReplis {
  		}
 		
 		
+
 		
 		/***********************************************************************************************************/
 		public static void main(String[] args) 
@@ -131,12 +141,12 @@ public class FileReplis {
 			
 			/****************************Implementation de la question 3 Anonyme*************************************/
 
-			// rep.trouverfichierAnonym("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			//rep.trouverfichierAnonym("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
 			
 			
 			/******************************************EXO1-partieB*********************************************/
 			
-			String dir = "C:\\Users\\utilisateur\\eclipse-workspace\\TP1";
+			/* String dir = "C:\\Users\\utilisateur\\eclipse-workspace\\TP1";
 			
 			try {
 				Files.walkFileTree(Paths.get(dir), new Exo1B());
@@ -144,7 +154,9 @@ public class FileReplis {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			*/
+
+		
 
 		}
 
