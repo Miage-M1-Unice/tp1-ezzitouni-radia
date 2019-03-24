@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 public class Reflexion {
@@ -41,14 +42,13 @@ public class Reflexion {
 		  public static void afficheEnTeteClasse(Class cl) {
 		    //  Affichage du modifier et du nom de la classe
 		 
-//			  int i = cl.getModifiers();
-//		     String modif = mod.toString(i);
-//		     System.out.println(modif);
-//		   
-			 
-			Object o = new Object();
+			  Object o = new Object();
 			  System.out.println(o.getClass().getName());
-
+			  
+			 int i = cl.getModifiers();
+		     String modif = Modifier.toString(i);
+		     System.out.println(modif);
+	
 
 		   // Récupération de la superclasse si elle existe (null si cl est le type Object)
 			  
@@ -58,8 +58,8 @@ public class Reflexion {
 		  
 		    // Affichage des interfaces que la classe implemente
 		    
-			  Class[] i = cl.getInterfaces();
-		      System.out.println("Interfaces = " + Arrays.asList(i));
+			  Class[] i1 = cl.getInterfaces();
+		      System.out.println("Interfaces = " + Arrays.asList(i1));
 		    
 		  
 		  }
@@ -96,7 +96,9 @@ public class Reflexion {
 		  }
 
 		  public static void main(String[] args) {
-		    boolean ok = false;
+			  
+			  
+			  boolean ok = false;
 
 		    while(!ok) {
 		      try {
@@ -112,6 +114,7 @@ public class Reflexion {
 		        System.out.println("Erreur d'E/S!");
 		      }
 		    }
+		    
 		  }
 		
 
