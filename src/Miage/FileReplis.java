@@ -91,22 +91,15 @@ public class FileReplis {
 
 		public void trouverfichierAnonym(String chemin, String ext) {
  			File fich = new File(chemin);
- 			
  			File[] liste = fich.listFiles(new FilenameFilter() {
  				
 				@Override
 				public boolean accept(File arg0, String arg1) {
 					// TODO Auto-generated method stub
 					
-					Pattern p = Pattern.compile(".*java");
-					Matcher m = p.matcher(chemin);
-					
-					if(m.find())
-						return true;
-					return false;
-					
-					//return arg1.toLowerCase().endsWith(ext);
+				return arg1.toLowerCase().endsWith(ext);
 				}
+				
 			});
  			
  			if(liste.length == 0) {
@@ -141,7 +134,7 @@ public class FileReplis {
 			
 			/****************************Implementation de la question 3 Anonyme*************************************/
 
-			//rep.trouverfichierAnonym("C:\\Users\\utilisateur\\eclipse-workspace\\TP1\\src\\Miage", ".java");
+			//rep.trouverfichierAnonym(".", ".java");
 			
 			
 			/******************************************EXO1-partieB*********************************************/
@@ -155,6 +148,9 @@ public class FileReplis {
 				e.printStackTrace();
 			}
 			*/
+			/******************************************EXO1-partieC*********************************************/
+
+			
 
 		
 
