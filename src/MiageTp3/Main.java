@@ -19,7 +19,7 @@ public class Main {
 
 		System.out.println("class "+c.getName());
 		
-		System.out.println("HIIIIIIIIIIIIIIII");
+		//System.out.println("HIIIIIIIIIIIIIIII");
 
 }
 		
